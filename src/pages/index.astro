@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
+import Post from "../components/Post.astro"
 ---
 
 <Layout title="Aprende Conmigo.dev">
-	<h1>Mi blog</h1>
+	<div class="posts flex flex-col gap-4">
+		<Post />
+	</div>
 </Layout>

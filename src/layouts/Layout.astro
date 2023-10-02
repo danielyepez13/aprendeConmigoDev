@@ -1,40 +1,42 @@
 ---
-import Header from "../components/Header.astro"
-import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Un blog hecho para la curiosidad y el aprendizaje. Programación, frameworks y librerías de JavaScript especialmente." />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="flex flex-col justify-between">
-		<Header />
-		<slot />
-		<Footer />
-	</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Un blog hecho para la curiosidad y el aprendizaje. Programación, frameworks y librerías de JavaScript especialmente."
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="flex flex-col justify-between gap-4">
+    <Header />
+    <slot />
+    <Footer />
+  </body>
 </html>
 <style is:global>
-	@font-face {
-		font-family: Panton;
-		src: url(../assets/fonts/PantonNarrow-Trial-Bold.woff);
-	}
+  @font-face {
+    font-family: Panton;
+    src: url(../assets/fonts/PantonNarrow-Trial-Bold.woff);
+  }
 
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		font-family: Panton, sans-serif;
-	}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Panton, sans-serif;
+  }
 </style>
