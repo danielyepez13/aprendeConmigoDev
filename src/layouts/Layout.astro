@@ -1,4 +1,7 @@
 ---
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+
 interface Props {
 	title: string;
 }
@@ -16,14 +19,22 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="flex flex-col justify-between">
+		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>
 <style is:global>
+	@font-face {
+		font-family: Panton;
+		src: url(../assets/fonts/PantonNarrow-Trial-Bold.woff);
+	}
+
 	* {
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
+		font-family: Panton, sans-serif;
 	}
 </style>
