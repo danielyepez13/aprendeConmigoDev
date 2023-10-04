@@ -1,10 +1,23 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Post from "../components/Post.astro"
+import Layout from "../layouts/Layout.astro";
+import Post from "../components/Post.astro";
+const allPosts = await Astro.glob("./posts/*.mdx");
 ---
 
 <Layout title="Aprende Conmigo.dev">
-	<div class="posts flex flex-col gap-4">
-		<Post />
-	</div>
+  <div class="posts flex flex-col gap-4">
+    {
+      allPosts.map((post) => (
+        <Post 
+		url={post.url} 
+		title={post.frontmatter.title} 
+		pubDate={post.frontmatter.pubDate}
+		author={post.frontmatter.author}
+		tags={post.frontmatter.tags}
+		image={post.frontmatter.image.url}
+		alt={post.frontmatter.image.alt}
+		/>
+      ))
+    }
+  </div>
 </Layout>

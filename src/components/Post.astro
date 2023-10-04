@@ -1,25 +1,33 @@
+---
+const { url, title, pubDate, author, tags, image, alt } = Astro.props
+---
+
 <div class="w-2/3 m-5 ms-16 p-8 flex flex-col justify-between rounded-lg post">
     <div class="post-header font-semibold">
-        Daniel Yepez
+        {author}
     </div>
     <div class="post-content self-center flex me-24">
         <div class="icon">
-            <img src="https://assets.vercel.com/image/upload/v1689795055/docs-assets/static/topics/icons/astro-light.svg" alt="" class="w-28 h-36">
+            <img src={image} alt={alt} class="w-28 h-36">
         </div>
-        <div class="content p-4 flex flex-col gap-2 border-s-4 lg:border-red-500 border-solid">
-            <h2 class="text-5xl">Adoro usar Astro</h2>
+        <div class="content px-4 flex flex-col gap-2 border-s-4 lg:border-red-500 border-solid">
+            <h2 class="text-5xl">{title}</h2>
             <div class="categories flex gap-4 tracking-wider font-semibold text-gray-600">
-                <p>astro</p> <p>framework</p> <p>javascript</p>
+                {
+                    tags?.map((tag:[]) => (
+                        <p>{tag}</p>
+                    ))
+                }
             </div>
-            <div>
-                <button class="more text-lg bg-orange-600 p-2 rounded-lg text-white font-bold">
+            <div class="more p-2">
+                <a href={url} class="text-lg bg-orange-600 p-2 rounded-lg text-white font-bold">
                     Leer mas
-                </button>
+                </a>
             </div>
         </div>
     </div>
     <div class="post-footer">
-        22 sep 2023
+        {pubDate.slice(0, 10)}
     </div>
 </div>
 
